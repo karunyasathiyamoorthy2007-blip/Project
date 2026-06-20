@@ -14,5 +14,6 @@ public class Student
        mark3=m3;
        mark4=m4;
        mark5=m5; 
+       mark6=m6;
     }
 }
