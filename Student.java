@@ -27,12 +27,12 @@ public class Student
             average[i]=total[i]/5.0;
         }
     }
-        static void sortData(int rollNo[],String name[],int total[],double average[],int n[]){
+        static void sortData(int rollNo[],String name[],int total[],double average[],int n){
             for(int i=0;i<n-1;i++)
             {
                 for(int j=i+1;j<n;j++)
                 {
-                    if(total(i)<total(j))
+                    if(total[i]<total[j])
                     {
                         int t=rollNo[i];
                         rollNo[i]=rollNo[j];
@@ -50,3 +50,26 @@ public class Student
                 }
             }
         }
+        static void display(int rollNo[],String name[],int total[],double average[],int n)
+        {
+            System.out.println("\nStudentRankList");
+            System.out.println("Rank \tRollNo \tName \tTotal \tAverage");
+            for(int i=0;i<n;i++)
+            {
+                System.out.println((i+1)+"\t"+rollNo[i]+"\t"+name[i]+"\t"+total[i]+"\t"+average[i]);
+            }
+        }
+        public static void main(String args[])
+        {
+            Scanner sc=new Scanner(System.in);
+            System.out.print("Enter Number of Student:");
+            int n=sc.nextInt();
+            int rollNo[]=new int[n];
+            String name[]=new String[n];
+            int total[]=new int[n];
+            double average[]=new double[n];
+            getData(rollNo,name,total,average,n);
+            sortData(rollNo,name,total,average,n);
+            display(rollNo,name,total,average,n);
+        }
+}
