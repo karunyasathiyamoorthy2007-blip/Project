@@ -4,7 +4,6 @@ import model.Student;
 
 public class RankingService {
 
-    // Sort students based on Total Marks (Descending Order)
     public void sortStudents(Student[] students) {
 
         for (int i = 0; i < students.length - 1; i++) {
@@ -19,6 +18,7 @@ public class RankingService {
             }
         }
     }
+
     public void displayRankList(Student[] students) {
 
         System.out.println("\n========== STUDENT RANK LIST ==========");
@@ -33,4 +33,67 @@ public class RankingService {
                     + students[i].getAverage());
         }
     }
+
+    public Student[] addStudent(Student[] students, Student newStudent) {
+        Student[] temp = new Student[students.length + 1];
+
+        for (int i = 0; i < students.length; i++) {
+            temp[i] = students[i];
+        }
+
+        temp[students.length] = newStudent;
+
+        System.out.println("Student Added Successfully.");
+
+        return temp;
+    }
+
+    public Student[] removeStudent(Student[] students, int rollNo) {
+
+        int index = -1;
+
+        for (int i = 0; i < students.length; i++) {
+            if (students[i].getRollNo() == rollNo) {
+                index = i;
+                break;
+            }
+        }
+
+        if (index == -1) {
+            System.out.println("Student Not Found.");
+            return students;
+        }
+
+        Student[] temp = new Student[students.length - 1];
+
+        int j = 0;
+
+        for (int i = 0; i < students.length; i++) {
+            if (i != index) {
+                temp[j++] = students[i];
+            }
+        }
+
+        System.out.println("Student Removed Successfully.");
+
+        return temp;
+    }
+
+    public void updateStudent(Student[] students, int rollNo) {
+
+        for (Student s : students) {
+
+            if (s.getRollNo() == rollNo) {
+
+                System.out.println("Enter New Student Details:");
+                s.getData();
+
+                System.out.println("Student Updated Successfully.");
+                return;
+            }
+        }
+
+        System.out.println("Student Not Found.");
+    }
+
 }
