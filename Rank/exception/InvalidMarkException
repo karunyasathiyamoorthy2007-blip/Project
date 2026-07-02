@@ -1,0 +1,9 @@
+package exception;
+public class InvalidMarkException extends Exception {
+    public InvalidMarkException() {
+        super("Invalid Mark! Please enter marks between 0 and 100.");
+    }
+    public InvalidMarkException(String message) {
+        super(message);
+    }
+}
